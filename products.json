@@ -1,0 +1,33 @@
+
+[
+  {
+    "id": 1,
+    "name": "iPhone 13",
+    "category": "Mobiles",
+    "price": 28500,
+    "condition": "Good",
+    "description": "128GB storage and excellent camera.",
+    "image": "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=600",
+    "date": 1
+  },
+  {
+    "id": 2,
+    "name": "MacBook Air M1",
+    "category": "Laptops",
+    "price": 48000,
+    "condition": "Like New",
+    "description": "Apple M1 chip, 8GB RAM and 256GB SSD.",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=600",
+    "date": 2
+  },
+  {
+    "id": 3,
+    "name": "Sony Headphones",
+    "category": "Audio",
+    "price": 6500,
+    "condition": "Like New",
+    "description": "Wireless headphones with great sound.",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600",
+    "date": 3
+  }
+]

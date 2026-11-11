@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReTech | Buy Sell Reuse</title>
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="navbar">
+    <a href="#" class="logo">Re<span>Tech</span>.</a>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#products">Explore</a>
+    </nav>
+
+    <div class="nav-actions">
+        <button class="wishlist-nav" onclick="showWishlist()">♡ <span id="wishCount">0</span></button>
+        <button class="sell-btn" onclick="openSellForm()">+ Sell Item</button>
+    </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+    <div class="hero-content">
+        <span class="eyebrow">♻ SMARTER SHOPPING STARTS HERE</span>
+        <h1>Good tech.<br>Better prices.<br><span>New stories.</span></h1>
+        <p>Discover pre-loved electronics, find amazing deals, and give your gadgets a second life.</p>
+
+        <div class="hero-buttons">
+            <a href="#products" class="primary-btn">Explore Products →</a>
+            <button class="secondary-btn" onclick="openSellForm()">Start Selling</button>
+        </div>
+
+        <div class="hero-stats">
+            <div><strong>100%</strong><small>Pre-loved finds</small></div>
+            <div><strong>Easy</strong><small>Listing process</small></div>
+            <div><strong>Smart</strong><small>Shopping choices</small></div>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=900" alt="Electronics">
+        <div class="floating-card">
+            <span>♻</span>
+            <div><strong>Give tech a second life</strong><small>Buy better. Waste less.</small></div>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="categories">
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">BROWSE COLLECTIONS</span>
+            <h2>Find your next <span>favourite.</span></h2>
+        </div>
+    </div>
+
+    <div class="category-grid">
+        <button class="category-card active" onclick="filterCategory('All',this)">
+            <span>✦</span><strong>All Items</strong>
+        </button>
+        <button class="category-card" onclick="filterCategory('Mobiles',this)">
+            <span>📱</span><strong>Mobiles</strong>
+        </button>
+        <button class="category-card" onclick="filterCategory('Laptops',this)">
+            <span>💻</span><strong>Laptops</strong>
+        </button>
+        <button class="category-card" onclick="filterCategory('Tablets',this)">
+            <span>▣</span><strong>Tablets</strong>
+        </button>
+        <button class="category-card" onclick="filterCategory('Audio',this)">
+            <span>🎧</span><strong>Audio</strong>
+        </button>
+        <button class="category-card" onclick="filterCategory('Accessories',this)">
+            <span>⌚</span><strong>Accessories</strong>
+        </button>
+    </div>
+</section>
+
+<section class="section products-section" id="products">
+    <div class="section-heading product-heading">
+        <div>
+            <span class="eyebrow">THE GOOD FINDS</span>
+            <h2>Explore products<span>.</span></h2>
+            <p>Quality gadgets looking for a new home.</p>
+        </div>
+
+        <div class="search-box">
+            <span>⌕</span>
+            <input type="text" id="searchInput" placeholder="Search electronics..." oninput="searchProducts()">
+        </div>
+    </div>
+
+    <div class="filter-row">
+        <span id="resultCount">Loading products...</span>
+        <select id="sortSelect" onchange="sortProducts()">
+            <option value="default">Sort: Recommended</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="newest">Recently Added</option>
+        </select>
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+</section>
+
+<section class="sell-banner">
+    <div>
+        <span class="eyebrow">YOUR OLD TECH HAS VALUE</span>
+        <h2>Not using it anymore?<br>Someone might need it.</h2>
+        <p>List your electronics and give them a new home.</p>
+        <button class="primary-btn" onclick="openSellForm()">Sell Your Item →</button>
+    </div>
+    <div class="banner-icon">♻</div>
+</section>
+
+<section class="section why-section">
+    <span class="eyebrow">WHY RETECH?</span>
+    <h2>Better for your wallet.<br><span>Better for the planet.</span></h2>
+
+    <div class="benefits">
+        <div><span>💰</span><h3>Affordable Finds</h3><p>Discover electronics at affordable prices.</p></div>
+        <div><span>♻️</span><h3>Reuse & Renew</h3><p>Give useful gadgets a second chance.</p></div>
+        <div><span>🤝</span><h3>Easy Listings</h3><p>List your electronics in a few steps.</p></div>
+    </div>
+</section>
+</main>
+
+<footer>
+    <a href="#" class="logo">Re<span>Tech</span>.</a>
+    <p>Buy better. Sell smarter. Reuse more.</p>
+    <small>© 2026 ReTech. Demo marketplace.</small>
+</footer>
+
+<!-- SELL MODAL -->
+<div class="modal" id="sellModal">
+    <div class="modal-content">
+        <button class="close-btn" onclick="closeSellForm()">×</button>
+        <span class="eyebrow">CREATE A LISTING</span>
+        <h2>Sell your electronics</h2>
+        <p>Give your gadget a new home.</p>
+
+        <form id="sellForm">
+            <label>Product name</label>
+            <input type="text" id="itemName" placeholder="e.g. iPhone 13" required>
+
+            <label>Category</label>
+            <select id="itemCategory" required>
+                <option value="">Select category</option>
+                <option>Mobiles</option>
+                <option>Laptops</option>
+                <option>Tablets</option>
+                <option>Audio</option>
+                <option>Accessories</option>
+            </select>
+
+            <label>Price (₹)</label>
+            <input type="number" id="itemPrice" min="1" placeholder="Enter price" required>
+
+            <label>Condition</label>
+            <select id="itemCondition" required>
+                <option value="">Select condition</option>
+                <option>Like New</option>
+                <option>Good</option>
+                <option>Fair</option>
+            </select>
+
+            <label>Image URL (optional)</label>
+            <input type="url" id="itemImage" placeholder="Paste image URL">
+
+            <label>Description</label>
+            <textarea id="itemDescription" placeholder="Describe your product..." required></textarea>
+
+            <button type="submit" class="primary-btn full-btn">Publish Listing →</button>
+        </form>
+    </div>
+</div>
+
+<!-- PRODUCT DETAILS MODAL -->
+<div class="modal" id="detailsModal">
+    <div class="modal-content details-content">
+        <button class="close-btn" onclick="closeDetails()">×</button>
+        <div id="detailsBody"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
